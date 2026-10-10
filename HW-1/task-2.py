@@ -19,6 +19,8 @@ def city_best(n, edges, mileage):
             for j in range(n):
                 if not used[j] and (u == -1 or dist[j] < dist[u]):
                     u = j
+
+                    
             if u == -1 or dist[u] == 10**7:
                 break
             used[u] = True
