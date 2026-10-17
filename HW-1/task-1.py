@@ -1,3 +1,4 @@
+import heapq
 def minpath(n, edges, A, B):
     graph = [[] for i in range(n)]
     for u, v, w in edges:
@@ -6,18 +7,17 @@ def minpath(n, edges, A, B):
     dist = [float('inf')] * n
     used = [False] * n
     dist[A] = 0
-    for i in range(n):
-        u = -1
-        for j in range(n):
-            if not used[j] and (u == -1 or dist[j] < dist[u]):
-                u = j
-        if u == -1 or dist[u] == float('inf'):
-            break
-        used[u] = True
+    heap = [(0, A)]
+    while heap:
+        d, u = heapq.heappop(heap)
+        if d > dist[u]:
+            continue
+        if u == B:
+            return d
         for v, w in graph[u]:
-            newdist = max(dist[u], w)
+            newdist = max(d, w)
             if newdist < dist[v]:
                 dist[v] = newdist
-    if dist[B] == float('inf'):
+                heapq.heappush(heap, (newdist, v))
         return -1
     return dist[B]
