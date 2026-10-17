@@ -6,8 +6,7 @@ def city_best(n, edges, mileage):
     best = 0
     max_count = -1
     for start in range(n):
-        #та же самая беда, что в первом таске(
-        dist = [10**7] * n
+        dist = [float('inf')] * n
         used = [False] * n
         dist[start] = 0
 
@@ -21,7 +20,7 @@ def city_best(n, edges, mileage):
                     u = j
 
 
-            if u == -1 or dist[u] == 10**7:
+            if u == -1 or dist[u] == float('inf'):
                 break
             used[u] = True
             for v, w in graph[u]:
