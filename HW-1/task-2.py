@@ -6,7 +6,7 @@ def city_best(n, edges, mileage):
     best = 0
     max_count = -1
     for start in range(n):
-        #та же самая беда, что а первом таске(
+        #та же самая беда, что в первом таске(
         dist = [10**7] * n
         used = [False] * n
         dist[start] = 0
@@ -20,7 +20,7 @@ def city_best(n, edges, mileage):
                 if not used[j] and (u == -1 or dist[j] < dist[u]):
                     u = j
 
-                    
+
             if u == -1 or dist[u] == 10**7:
                 break
             used[u] = True
